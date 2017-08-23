@@ -4,7 +4,7 @@ function block(x,y,isBlue,h){
   this.isBlue = isBlue
   this.h = h
   this.draw = function(){
-    if(isBlue){
+    if(this.isBlue){
       ctx.drawImage(bluecube, 150+39*this.x-18*this.y,250+18*this.y-39*this.h)
     }
     else{
@@ -22,8 +22,16 @@ for (var x = 0; x<7; x++){
 }
 console.log(blocks)
 
+var heightGrid=[[4,4,2,2,3,3,3],
+                [4,3,2,2,2,2,2],
+                [3,3,2,1,1,2,2],
+                [3,2,2,2,1,1,2],
+                [2,2,2,2,1,1,1],
+                [2,2,1,1,0,1,1],
+                [1,1,2,1,0,0,1]]
+
 for (var x = 0; x<7; x++){
   for (var y = 0; y<7; y++){
-    blocks[x][y].h = Math.floor(3-x/3-y/3);
+    blocks[x][y].h = heightGrid[y][x];
   }
 }

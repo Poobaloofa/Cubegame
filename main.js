@@ -3,13 +3,20 @@ function fullDraw(){
   for (var x = 0; x<7; x++){
     for (var y = 0; y<7; y++){
       blocks[x][y].draw();
+      if(player.x == x && player.y == y){
+        player.draw()
+      }
     }
   }
-  player.draw()
 }
 
 player.update()
 fullDraw()
+
+setInterval(function(){
+  player.animate();
+  fullDraw();
+}, 1000)
 /*var b1 = new block(0,0,true,0)
 var b2 = new block(1,0,false,0)
 var b3 = new block(0,-1,true,1)
